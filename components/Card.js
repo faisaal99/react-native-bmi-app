@@ -11,16 +11,25 @@ const colors = {
   }
 
 const Card = (props) => {
-    var propertyNumber = props.initNumber
 
+    // Holds value for the current number
     const [number, setNumber] = useState(props.initNumber)
 
+    // Adds by one
     const addToNumber = () => {
         setNumber(propertyNumber => propertyNumber + 1)
+        sendData(1)
     }
 
+    // Subracts by one
     const subtractFromNumber = () => {
         setNumber(propertyNumber => propertyNumber - 1)
+        sendData(-1)
+    }
+
+    // Sends back data to parent
+    const sendData = extra => {
+        props.sendBackData(number + extra, props.descriptionText)
     }
 
     return (
